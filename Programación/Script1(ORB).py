@@ -16,6 +16,7 @@ kp, des= orb.compute(img,kp)
 img2 = cv2.drawKeypoints(img,kp,color=(0,255,0), flags=0)
 #Mostramos por pantalla
 cv2.namedWindow('image2')
+#Mostramos imagen2
 cv2.imshow('image2',img2)
 # Este algoritmo ha sido seleccionado por sus resultados computacionales, 
 #analizado previamente en una comparativa entre detectores, actua similar a detectores
