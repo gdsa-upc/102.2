@@ -4,7 +4,7 @@ import cv2
 from matplotlib import pyplot as plt
 
 #Leemos la imagen de entrada a analizar
-img=cv2.imread('teatre2.jpg',1)
+img=cv2.imread('farmacia_albinyana_01.jpg',1)
 #Habilitamos el módulo que nos permitirá utilizar el detector
 orb=cv2.ORB()
 #Ejecutamos la función, insertandole la imagen deseada y almacenamos los keyp.
