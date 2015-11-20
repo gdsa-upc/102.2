@@ -1,10 +1,13 @@
 # -*- coding: utf-8 -*-
 import numpy as np
 import cv2
-from matplotlib import pyplot as plt
+import os
 
+
+
+ruta=os.path.dirname(os.path.abspath(__file__))#Ruta directa carpeta projetct
 #Leemos la imagen de entrada a analizar
-img=cv2.imread('teatre2.jpg',1)
+img=cv2.imread(ruta+'\Mushroom2.png',1)
 #Habilitamos el módulo que nos permitirá utilizar el detector
 orb=cv2.ORB()
 #Ejecutamos la función, insertandole la imagen deseada y almacenamos los keyp.
@@ -16,7 +19,6 @@ kp, des= orb.compute(img,kp)
 img2 = cv2.drawKeypoints(img,kp,color=(0,255,0), flags=0)
 #Mostramos por pantalla
 cv2.namedWindow('image2')
-#Mostramos imagen2
 cv2.imshow('image2',img2)
 # Este algoritmo ha sido seleccionado por sus resultados computacionales, 
 #analizado previamente en una comparativa entre detectores, actua similar a detectores
