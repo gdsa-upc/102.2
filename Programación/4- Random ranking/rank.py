@@ -5,7 +5,7 @@ import random
 import numpy as np
 import cPickle as pk
 
-def randomranking(pathval,pathtrain,outpath):
+def rank(pathval,pathtrain,outpath):
     #Obrim els fitxers de característiques de validació i train
     fval= open(pathval+'\\Features.txt','r')
     ftrain= open(pathtrain+'\\Features.txt','r')
