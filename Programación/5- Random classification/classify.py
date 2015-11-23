@@ -17,10 +17,9 @@ def classify(feat,path_out,labels):
     out.write('ImageID' + '\t' + 'ClassID' + '\n')
     
     for line in feat.keys():  #key es el camp que conté la ID de la imatge fins del .txt de 'features'
-        #Esco aleatoria 
-        rand = random.choice(open(in_l).readlines())
+        #Escollim label aleatoria 
         #Escribim al .txt de sortida
-        out.write(line + "\t" + rand + '\n')
+        out.write(line + "\t" + random.choice(open(in_l).readlines()) + '\n')
         
     #Tancar .txt de sortida
     out.close()
