@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
 import os
-import metrics
 from sklearn.metrics import accuracy_score,precision_recall_fscore_support
 from sklearn.metrics import recall_score,f1_score
-from sklearn.metrics import average_precision_score,confusion_matrix
+from sklearn.metrics import confusion_matrix
 
 
 def evaluate_classification(automatic_annot,annotation):
@@ -29,6 +28,7 @@ def evaluate_classification(automatic_annot,annotation):
             if ImageID1==ImageID2:
                 lista_pred.append(ClassID1)
                 lista_ground_truth.append(ClassID2)
+                #Per a cada ImageID assignada automàticament, mirem en la gorund_truth quina es la seva ClassID real i omplim les llistes
     #Bucles per omplir les llistes d'anotacions automatiques i ground truth
     automatic.close()
     #Tanquem el fitxer de les nostres anotacions automàtiques
@@ -49,7 +49,10 @@ def evaluate_classification(automatic_annot,annotation):
     labels.close()
     (precision_cl,recall_cl,f1_score_cl,support)=precision_recall_fscore_support(lista_ground_truth, lista_pred, labels=labels_list) 
     #Compute precision, recall, F-measure and support for each class
-    average_precis=average_precision_score(lista_ground_truth, lista_pred) 
+    suma=0
+    for i in precision_cl:
+        suma += i
+    average_precis=suma/len(precision_cl)
     #Compute average precision (AP) from prediction scores
     recall=recall_score(lista_ground_truth, lista_pred) 
     #Compute the recall
