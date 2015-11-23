@@ -6,7 +6,7 @@ import random
 import numpy as np
 from sklearn.metrics import average_precision_score
 
-def evaluate_ranking7(path,Gt_val_test):
+def evaluate_ranking(path,Gt_val_test):
     ##  EXPLICACIÓN:
     # Primero hay que recorrer todos los rankings generados, obtener a que clase pertenece la ID general de cada ranking
     #una vez tenemos la clase de la id, ver de todos los resultados del ranking correspondiente a esa imagen cuantos también
