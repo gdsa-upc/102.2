@@ -15,12 +15,14 @@ def classify(feat,path_out,labels):
     feat = pk.load(in_f)
     #Afegim primera linia al .txt de sortida
     out.write('ImageID' + '\t' + 'ClassID' + '\n')
-    
-    for line in feat.keys():  #key es el camp que conté la ID de la imatge fins del .txt de 'features'
+    lista=[]
+    for line in in_l:
+        lista.append(line.replace('\n',''))
+    for line1 in feat.keys():  #key es el camp que conté la ID de la imatge fins del .txt de 'features'
         #Escollim label aleatoria
-        #rand = random.choice(open(in_l).readlines())
+        rand = random.choice(lista)
         #Escribim al .txt de sortida
-        out.write(line + "\t" + random.choice(open(in_l).readlines()) + '\n')
+        out.write(line1 + "\t" + rand + '\n')
         
     #Tancar .txt de sortida
     out.close()
