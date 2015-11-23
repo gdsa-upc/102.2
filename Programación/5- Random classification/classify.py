@@ -20,7 +20,7 @@ def classify(feat,path_out,labels):
         #Escollim label aleatoria
         #rand = random.choice(open(in_l).readlines())
         #Escribim al .txt de sortida
-        out.write(line + "\t" + random.choice(open(in_l).readlines()) + '\n')
+        out.write(k + "\t" + random.choice(open(in_l).readlines()) + '\n')
         
     #Tancar .txt de sortida
     out.close()
