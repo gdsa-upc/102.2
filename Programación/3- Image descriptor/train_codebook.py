@@ -8,13 +8,15 @@ import os
 import sklearn.metrics
 import scipy
 from get_params import get_params
+from scipy.cluster.vq import vq, kmeans, whiten
 
 from get_local_features import get_local_features
 
 def train_codebook(descriptores):
+    des=whiten(descriptores)
     #Entrenamos el codebook, 4 es el numero de cluster que queremos 
     codebook={}
-    codebook = scipy.cluster.vq.kmeans(descriptores, 4, iter=20, thresh=1e-05, check_finite=True)
+    codebook = scipy.cluster.vq.kmeans(des, 4, iter=20, thresh=1e-05, check_finite=True)
     return codebook
     
     
