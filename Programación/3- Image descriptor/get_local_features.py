@@ -12,7 +12,7 @@ def get_local_features(params):
     #Obrim .txt de sortida
     feat = open('C:\Users\Gerard\Documents\Universidad\TercerCurso\GDSA\Proyecto\Codigo\pruebalocalfeat.txt')  
     #Declarem el dictionary
-    dic1=dict()
+    #dic1=dict()
     orb=cv2.ORB()
     #ORB obtiene 500 features de serie 
         #Recorrem cada Imatge 
