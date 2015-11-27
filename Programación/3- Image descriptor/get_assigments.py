@@ -12,7 +12,7 @@ from train_codebook import train_codebook
 
 
 def get_assignments (descriptores,codebook):
-    #Calculem les assignacions
+    #Calculem les assignacions i omplim els parametres (code i dist)
     [code,dist]=vq(descriptores,codebook)
     
     #Retornem el vector amb les assignacions per cada descriptor
