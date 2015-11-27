@@ -14,6 +14,7 @@ def get_local_features(params):
     #Declarem el dictionary
     dic1=dict()
     orb=cv2.ORB()
+    #ORB obtiene 500 features de serie 
         #Recorrem cada Imatge 
     for line in ID:
         #Ahora tenemos que calcular ORB para cada imagen y guardarlo!
@@ -22,10 +23,13 @@ def get_local_features(params):
         kp=orb.detect(img,None)
         kp, des= orb.compute(img,kp,params['descriptor_size']) #computamos
         #guardamos para cada valor de la imagen analizada sus descriptores
-        dic1[line.replace('\n','')]=des
-    return dic1
+        ##Debemos guardar todos los descriptores en una matriz
+        #dic1[line.replace('\n','')]=des
+    return des
     ID.close()
 
+
+    
     
 
 
