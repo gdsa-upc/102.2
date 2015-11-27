@@ -16,7 +16,7 @@ def train_codebook(descriptores):
     des=whiten(descriptores)
     #Entrenamos el codebook, 4 es el numero de cluster que queremos 
     codebook={}
-    codebook = kmeans(des, k_or_guess=4.0)
+    [codebook,distortion] = kmeans(des, k_or_guess=4.0)
     return codebook
     
     
