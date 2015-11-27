@@ -8,18 +8,19 @@
 #import sklearn.metrics
 import scipy
 from scipy.cluster.vq import kmeans, whiten
-#from get_params import get_params
 
+#Importar funció get_local_features
 from get_local_features import get_local_features
 
-def train_codebook(descriptores):
-    des=whiten(descriptores)
-    #Entrenamos el codebook, 4 es el numero de cluster que queremos 
+def train_codebook(descriptors):
+    #Normalitzem els valors dels descriptors
+    des=whiten(descriptors)
+    #Creem una llista buida
     codebook={}
+    #Omplim els dos parametres de la llista (codebook i distortion) amb els valor que retorna la funcio kmeans.
     [codebook,distortion] = kmeans(des, k_or_guess=4.0)
+   
+    #Retornem solament el parametre codebook
     return codebook
     
     
-#Para probarlo
-#params=get_params()
-#train_codebook(get_local_features(params))
