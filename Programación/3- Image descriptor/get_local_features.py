@@ -9,10 +9,8 @@ from get_params import get_params
 def get_local_features(params):
     #Obrim .txt d'entrada
     ID =open(os.path.join(params['root'],params['database'],'val','ImageIDs.txt'), 'r')
-    #Obrim .txt de sortida
-    feat = open('C:\Users\Gerard\Documents\Universidad\TercerCurso\GDSA\Proyecto\Codigo\pruebalocalfeat.txt')  
     #Declarem el dictionary
-    #dic1=dict()
+    dic1=dict()
     orb=cv2.ORB()
     #ORB obtiene 500 features de serie 
         #Recorrem cada Imatge 
@@ -21,11 +19,10 @@ def get_local_features(params):
         ##leemos
         img =  cv2.imread(os.path.join(params['root'],params['database'],'val','images',str(line).replace('\n','') + '.jpg'))
         kp=orb.detect(img,None)
-        kp, des= orb.compute(img,kp,params['descriptor_size']) #computamos
-        #guardamos para cada valor de la imagen analizada sus descriptores
-        ##Debemos guardar todos los descriptores en una matriz
-        #dic1[line.replace('\n','')]=des
-    return des
+        kp, des= orb.compute(img,kp,params['descriptor_size'])
+        #guardamos para cada imagen analizada sus descriptores
+        dic1[str(line.replace('\n',''))]=des
+    return dic1
     ID.close()
 
 
