@@ -1,7 +1,11 @@
 import os
 import numpy as np
+import cPickle as pk
 from get_params import get_params
 from get_local_features import get_local_features
+from train_codebook import train_codebook
+from get_assignments import get_assignments
+from build_bow import build_bow
 
 params=get_params()
 ID =open(os.path.join(params['root'],params['database'],'train','ImageIDs.txt'), 'r')
@@ -23,3 +27,4 @@ for line in ID:
     assignments=get_assignments(x,codebook)
     dic1[str(line).replace('\n','')]=build_bow(assignments,codebook)
 ID.close()
+
