@@ -15,7 +15,11 @@ codebook=train_codebook(params,desc)
 
 ID =open(os.path.join(params['root'],params['database'],'val','ImageIDs.txt'), 'r')
 desc_val=get_local_features(params,os.path.join(params['root'],params['database'],'val','images',str(ID.readline()).replace('\n','') + '.jpg'))
+assignments=get_assignments(desc_val,codebook)
+dic1=dict()
+dic1[str(ID.readline()).replace('\n','')]=build_bow(assignments,codebook)
 for line in ID:
     x=get_local_features(params,os.path.join(params['root'],params['database'],'val','images',str(line).replace('\n','') + '.jpg'))
-    desc_val=np.concatenate((desc,x))
+    assignments=get_assignments(x,codebook)
+    dic1[str(line).replace('\n','')]=build_bow(assignments,codebook)
 ID.close()
