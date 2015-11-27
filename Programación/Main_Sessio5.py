@@ -8,5 +8,5 @@ ID =open(os.path.join(params['root'],params['database'],'train','ImageIDs.txt'),
 desc=get_local_features(params,os.path.join(params['root'],params['database'],'train','images',str(ID.readline()).replace('\n','') + '.jpg'))
 for line in ID:
     x=get_local_features(params,os.path.join(params['root'],params['database'],'train','images',str(line).replace('\n','') + '.jpg'))
-    desc=np.array(desc,x)
+    desc=np.concatenate((desc,x))
 ID.close()
