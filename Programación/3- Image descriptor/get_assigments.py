@@ -11,5 +11,5 @@ from train_codebook import train_codebook
 
 def get_assignments (descriptores,codebook):
     #Calculem les assignacions
-    assignments=vq(descriptores,codebook)
+    [code,dist]=vq(descriptores,codebook)
     return assignments
