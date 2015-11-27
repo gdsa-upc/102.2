@@ -6,4 +6,4 @@ def get_assignments (descriptores,codebook):
     [code,dist]=vq(des,codebook)
     
     #Retornem el vector amb les assignacions per cada descriptor
-    return assignments
+    return code
