@@ -9,5 +9,6 @@ from scipy.cluster.vq import vq, kmeans, whiten
 
 from train_codebook import train_codebook
 
-def get_assigments (codebook):
-    
+def get_assignments (descriptores,codebook):
+    assignments=vq(descriptores,codebook)
+    return assignments
