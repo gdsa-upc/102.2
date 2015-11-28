@@ -47,7 +47,7 @@ def rank(params):
         #No evaluem la classe desconegut
         if vkey not in lista_desconegut:
             #Obrim el fitxer on escriurem el ranking per la imatge de validació
-            frank = open((os.path.join(params['root'],params['database'],'val','result',vkey,'.txt')),'w')
+            frank = open((os.path.join(params['root'],params['database'],'val','result',vkey+'.txt')),'w')
             #Calculem la distància entre l'histograma de validació i els de train
             ldist=sklearn.metrics.pairwise.pairwise_distances(dval[vkey],lhtrain)
             #Creem una llista de tuples amb les IDs i les distancies de train
