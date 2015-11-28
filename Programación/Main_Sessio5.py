@@ -18,6 +18,7 @@ for line in ID:
     desc=np.concatenate((desc,x))
 ID.close()
 
+#Entrenament del KMeans només per les fotos d'entrenament
 codebook=train_codebook(params,desc)
 
 ID =open(os.path.join(params['root'],params['database'],'val','ImageIDs.txt'), 'r')
