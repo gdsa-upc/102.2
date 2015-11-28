@@ -10,5 +10,5 @@ def build_bow(assignments,codebook):
         for i in assignments:
             if i==x:
                 bow[x]+=1
-    bow=preprocessing.normalize(bow)
+    bow=preprocessing.normalize(bow)[0]
     return bow
