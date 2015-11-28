@@ -3,14 +3,14 @@ import cv2
 
 def get_local_features(params,image):
     orb=cv2.ORB()
-    #ORB obtiene 500 features de serie 
-    #Ahora tenemos que calcular ORB para cada imagen y guardarlo!
-    ##leemos
-    #img = cv2.imread(os.path.join(params['root'],params['database'],'val','images',str(line).replace('\n','') + '.jpg'))
+    #ORB obté 500 características de serie
+    #Calculem els ORB per a la imatge
     img = cv2.imread(image)
+    #Guardem els Keypoints
     kp=orb.detect(img,None)
+    #Guardem els Keypoints i els descriptors per la imatge
     kp,des= orb.compute(img,kp,params['descriptor_size'])
-    #guardamos para cada imagen analizada sus descriptores
+    #Retornem els descriptors de la imatge
     return des
 
 
