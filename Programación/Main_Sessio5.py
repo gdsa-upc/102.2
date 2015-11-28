@@ -19,7 +19,8 @@ for line in ID:
     desc_train=np.concatenate((desc_train,x))
 
 #Entrenament del KMeans només per les fotos d'entrenament
-codebook=train_codebook(params,desc_train)
+paraules=100
+codebook=train_codebook(params,desc_train,paraules)
 #Calculem les assignacions per les imatges d'entrenament
 assignments=get_assignments(desc_train,codebook)
 #Creació del diccionari
