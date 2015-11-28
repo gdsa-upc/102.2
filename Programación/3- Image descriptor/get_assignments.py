@@ -3,7 +3,7 @@ from sklearn import preprocessing
 
 def get_assignments (descriptores,codebook):
     #Normalitzem els valors
-    des=preprocessing.normalize(descriptores)
+    des=preprocessing.normalize(descriptores)[0]
     #Calculem les assignacions i omplim els parametres (code i dist)
     [code,dist]=vq(des,codebook)
     
