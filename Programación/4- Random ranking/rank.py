@@ -1,12 +1,8 @@
 # -*- coding: utf-8 -*-
 ## Ranking
 import os
-import random
-import numpy as np
 import cPickle as pk
-import sklearn as sklearn
-from get_params import get_params
-
+from sklearn import metrics
 
 def rank(params):
     #Obrim els fitxers de característiques de validació i train
@@ -24,7 +20,7 @@ def rank(params):
         #Segons el .txt entrant, el primer paràmetre que trobem a cada linia és la ImageID i el segon la ClassID
         if ClassID=='desconegut':
             lista_desconegut.append(ImageID)
-        #Si la ClasseID és desconegut, posem la ImageID a la llista
+    #Si la ClasseID és desconegut, posem la ImageID a la llista
     #Declarem els dictionaries
     dval=dict()
     dtrain=dict()
@@ -49,10 +45,11 @@ def rank(params):
             #Obrim el fitxer on escriurem el ranking per la imatge de validació
             frank = open((os.path.join(params['root'],params['database'],'val','result',vkey+'.txt')),'w')
             #Calculem la distància entre l'histograma de validació i els de train
-            ldist=sklearn.metrics.pairwise.pairwise_distances(dval[vkey],lhtrain)
+            ldist=metrics.pairwise.pairwise_distances(dval[vkey],lhtrain,metric='euclidean',n_jobs=1)[0]
             #Creem una llista de tuples amb les IDs i les distancies de train
+            ldist=list(ldist)
             for tkey in lktrain:
-                tup=(tkey,ldist.pop[0])
+                tup=(tkey,ldist.pop(0))
                 ltup.append(tup)
             #Ordenem la llista segons la distancia 
             sorted(ltup, key=lambda distancia: distancia[1])
@@ -60,6 +57,7 @@ def rank(params):
             for tupla in ltup:
                 frank.write(tupla[0]+"\n")
             frank.close()
+            ltup=[]
     #Tanquem els fitxers de característiques de validació i train
     fval.close()
     ftrain.close()
