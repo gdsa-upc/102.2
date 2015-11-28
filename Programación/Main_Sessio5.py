@@ -26,14 +26,14 @@ assignments=get_assignments(desc_train,codebook)
 #Creació del diccionari
 dictrain=dict()
 ID =open(os.path.join(params['root'],params['database'],'train','ImageIDs.txt'), 'r')
-dictrain[str(ID.readline()).replace('\n','')]=build_bow(assignments,codebook)
+dictrain[str(ID.readline()).replace('\n','')]=build_bow(assignments,codebook,paraules)
 
 for line in ID:
     x=get_local_features(params,os.path.join(params['root'],params['database'],'train','images',str(line).replace('\n','') + '.jpg'))
     #Calculem les assignacions per les imatges d'entrenament
     assignments=get_assignments(x,codebook)
     #Creació del BoW per les imatges d'entrenament i emplenament del diccionari
-    dictrain[str(line).replace('\n','')]=build_bow(assignments,codebook)
+    dictrain[str(line).replace('\n','')]=build_bow(assignments,codebook,paraules)
 ID.close()
 
 #Creació del BoW per les imatges d'entrenament
@@ -49,14 +49,14 @@ desc_val=get_local_features(params,os.path.join(params['root'],params['database'
 assignments=get_assignments(desc_val,codebook)
 #Creació del diccionari
 dicval=dict()
-dicval[str(ID.readline()).replace('\n','')]=build_bow(assignments,codebook)
+dicval[str(ID.readline()).replace('\n','')]=build_bow(assignments,codebook,paraules)
 
 for line in ID:
     x=get_local_features(params,os.path.join(params['root'],params['database'],'val','images',str(line).replace('\n','') + '.jpg'))
     #Calculem les assignacions per les imatges de validacio
     assignments=get_assignments(x,codebook)
     #Creació del BoW per les imatges de validacio i emplenament del diccionari
-    dicval[str(line).replace('\n','')]=build_bow(assignments,codebook)
+    dicval[str(line).replace('\n','')]=build_bow(assignments,codebook,paraules)
 ID.close()
 
 bow_val = open (os.path.join(params['root'],params['database'],'val','Features.txt'), 'w')
