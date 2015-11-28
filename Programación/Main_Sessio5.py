@@ -35,7 +35,7 @@ for line in ID:
 ID.close()
 
 #Creació del BoW per les imatges d'entrenament
-bow_train = open (os.path.join(params['root'],params['database'],'train','bow_train.txt'), 'w')
+bow_train = open (os.path.join(params['root'],params['database'],'train','Features.txt'), 'w')
 pk.dump(dictrain,bow_train)
 bow_train.close()
 
@@ -57,7 +57,7 @@ for line in ID:
     dicval[str(line).replace('\n','')]=build_bow(assignments,codebook)
 ID.close()
 
-bow_val = open (os.path.join(params['root'],params['database'],'val','bow_val.txt'), 'w')
+bow_val = open (os.path.join(params['root'],params['database'],'val','Features.txt'), 'w')
 pk.dump(dicval,bow_val)
 bow_val.close()
 
