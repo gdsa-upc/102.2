@@ -7,11 +7,14 @@ from train_codebook import train_codebook
 from get_assignments import get_assignments
 from build_bow import build_bow
 
+#Extraccio dels parametres
 params=get_params()
 ID =open(os.path.join(params['root'],params['database'],'train','ImageIDs.txt'), 'r')
 desc=get_local_features(params,os.path.join(params['root'],params['database'],'train','images',str(ID.readline()).replace('\n','') + '.jpg'))
+#Extraccio de les características per a totes les imatges d'entrenament
 for line in ID:
     x=get_local_features(params,os.path.join(params['root'],params['database'],'train','images',str(line).replace('\n','') + '.jpg'))
+    #Concatenar les caracteristiques de cada imatge
     desc=np.concatenate((desc,x))
 ID.close()
 
