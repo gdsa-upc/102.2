@@ -17,7 +17,7 @@ for line in ID:
     x=get_local_features(params,os.path.join(params['root'],params['database'],'train','images',str(line).replace('\n','') + '.jpg'))
     #Concatenar les caracteristiques de cada imatge
     desc_train=np.concatenate((desc_train,x))
-
+ID.close()
 #Entrenament del KMeans només per les fotos d'entrenament
 paraules=100
 codebook=train_codebook(params,desc_train,paraules)
@@ -25,6 +25,7 @@ codebook=train_codebook(params,desc_train,paraules)
 assignments=get_assignments(desc_train,codebook)
 #Creació del diccionari
 dictrain=dict()
+ID =open(os.path.join(params['root'],params['database'],'train','ImageIDs.txt'), 'r')
 dictrain[str(ID.readline()).replace('\n','')]=build_bow(assignments,codebook)
 
 for line in ID:
