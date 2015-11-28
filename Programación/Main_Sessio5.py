@@ -1,3 +1,4 @@
+# -*- coding: cp1252 -*-
 import os
 import numpy as np
 import cPickle as pk
@@ -18,6 +19,7 @@ for line in ID:
     #Concatenar les caracteristiques de cada imatge
     desc_train=np.concatenate((desc_train,x))
 ID.close()
+
 #Entrenament del KMeans només per les fotos d'entrenament
 paraules=100
 codebook=train_codebook(params,desc_train,paraules)
@@ -34,6 +36,10 @@ for line in ID:
     assignments=get_assignments(x,codebook)
     #Creació del BoW per les imatges d'entrenament i emplenament del diccionari
     dictrain[str(line).replace('\n','')]=build_bow(assignments,codebook,paraules)
+    print ('funcion build bow'+'\t')
+    print build_bow(assignments,codebook,paraules)
+    print ('\n')
+    print dictrain[str(line).replace('\n','')]
 ID.close()
 
 #Creació del BoW per les imatges d'entrenament
