@@ -36,10 +36,6 @@ for line in ID:
     assignments=get_assignments(x,codebook)
     #Creació del BoW per les imatges d'entrenament i emplenament del diccionari
     dictrain[str(line).replace('\n','')]=build_bow(assignments,codebook,paraules)
-    print ('funcion build bow'+'\t')
-    print build_bow(assignments,codebook,paraules)
-    print ('\n')
-    print dictrain[str(line).replace('\n','')]
 ID.close()
 
 #Creació del BoW per les imatges d'entrenament
