@@ -2,6 +2,9 @@ from get_params import get_params
 from build_database import build_database
 from get_features import get_features
 from rank import rank
+from eval_rankings import eval_rankings
+import warnings
+warnings.filterwarnings("ignore")
 
 #Extraccio dels parametres
 params=get_params()
