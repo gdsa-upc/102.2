@@ -5,14 +5,20 @@ from rank import rank
 
 #Extraccio dels parametres
 params=get_params()
-params['split']='val'
 #Creació de la base de dades
-build_database(params)
 params['split']='train'
+build_database(params)
+params['split']='val'
 build_database(params)
 #Extracció de les características
 get_features(params)
-#Calcul del ranquing
+#Calcul del ranking
 rank(params)
-
+#Evaluació dle ranking
+ap_list=eval_rankings(params)
+print "-Llista de Average Precission: "
+print ap_list
+print "\n"
+print "-Mean Average Precission: "
+print np.mean(ap_list)
 
