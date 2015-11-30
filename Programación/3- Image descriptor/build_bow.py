@@ -10,5 +10,6 @@ def build_bow(assignments,codebook,paraules):
         for i in assignments:
             if i==x:
                 bow[x]+=1
+    #Normalitzem els valors amb la normalització L2
     bow=preprocessing.normalize(bow)[0]
     return bow
