@@ -52,7 +52,7 @@ def rank(params):
                 tup=(tkey,ldist.pop(0))
                 ltup.append(tup)
             #Ordenem la llista segons la distancia 
-            sorted(ltup, key=lambda distancia: distancia[1])
+            ltup=sorted(ltup, key=lambda distancia: distancia[1])
             #Escrivim cada ID ordenada al fitxer rank
             for tupla in ltup:
                 frank.write(tupla[0]+"\n")
