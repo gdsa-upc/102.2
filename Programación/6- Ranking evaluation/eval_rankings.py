@@ -146,7 +146,7 @@ def eval_rankings(params):
     annotation_val, annotation_train = read_annotation(params)
     
     # For all generated rankings
-    for val_id in os.listdir(os.path.join(params['root'],params['root_save'],params['rankings_dir'],params['descriptor_type'],params['split'],'result')):
+    for val_id in os.listdir(os.path.join(params['root'],params['database'],params['split'],'result'))):
         
         query_class, ranking = load_ranking(params,val_id,annotation_val)
         
