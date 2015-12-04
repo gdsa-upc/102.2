@@ -5,6 +5,7 @@ def train_classifier(params,caracteristiques_train):
     clf=svm.SVC()
     #Obrim el fitxer de les anotacions
     annotation = open(os.path.join(params['root'],params['database'],'train','annotation.txt'),'r')
+    #Creacio de la llista buida
     labels=[]
     for line in annotation:
         #Afegim a la variable label totes les classes tretes del .txt de les annotacions
