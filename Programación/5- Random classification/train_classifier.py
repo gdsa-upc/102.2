@@ -10,7 +10,7 @@ def train_classifier(params,caracteristiques_train):
     #Bucle per obtenir les 'labels' del annotation.txt
     for line in annotation:
         #Afegim a la variable label totes les classes tretes del .txt de les annotacions
-        #utilitzant la funcio split( ) i sppend( ) 
+        #utilitzant la funcio split( ) i append( ) 
         labels.append(line.split()[0])
     #Eliminem classes repetides amb la funcio set
     labels = set(labels)
