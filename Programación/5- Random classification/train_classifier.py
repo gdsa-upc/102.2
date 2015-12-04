@@ -2,6 +2,7 @@ import os
 from sklearn import svm
 
 def train_classifier(params,caracteristiques_train):
+    #Creacio SVC
     clf = svm.SVC()
     #Obrim el fitxer de les anotacions
     annotation = open(os.path.join(params['root'],params['database'],'train','annotation.txt'),'r')
