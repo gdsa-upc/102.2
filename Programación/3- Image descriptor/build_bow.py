@@ -1,6 +1,4 @@
-import os
-import numpy as np
-import cPickle as pk
+# -*- coding: cp1252 -*-
 from sklearn import preprocessing
 
 def build_bow(assignments,codebook,paraules):
@@ -10,6 +8,6 @@ def build_bow(assignments,codebook,paraules):
         for i in assignments:
             if i==x:
                 bow[x]+=1
-    #Normalitzem els valors amb la normalització L2
+    #Normalitzem els valors amb la normalitzacio L2
     bow=preprocessing.normalize(bow)[0]
     return bow
