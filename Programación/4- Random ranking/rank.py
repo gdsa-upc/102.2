@@ -28,9 +28,9 @@ def rank(params):
     dval=pk.load(fval)
     dtrain=pk.load(ftrain)
     #Generem una llista amb les keys de train
+    lhtrain=list()
     lktrain=dtrain.keys()
     #Generem una llista amb els histogrames del diccionari train
-    lhtrain=list()
     for tkey in lktrain:
         lhtrain.append(dtrain[tkey])
         
