@@ -61,7 +61,9 @@ def train_classifier(params):
     
     
     #Entrenem el model SVM amb les dades d'entrenament
-    x=clf.fit(llf,labels)
+    clf.fit(llf,labels) # Mirar ejemplo de Model Persistence: http://scikit-learn.org/stable/tutorial/basic/tutorial.html
     
-    #Guardem el model a memòria
-    #.....
+    #Guardem el model a memòria. El pk.dumps guarda el model en un string en comptes de en un fitxer
+    trained_model=pk.dumps(clf)
+    #Per carregarlo: model=pk.loads(trained_model)
+    return trained_model
