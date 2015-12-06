@@ -54,9 +54,15 @@ def train_classifier(params):
     #Ej:  Classe2   Features[0]
     #     Classe4   Features[1]
     #     Classe2   Features[2]
-    llf=list()
-    for key in lftrain
-        llf=
+    llf=[]
+    i=0
+    for key in lftrain:
+        #Mirar ejemplo: http://www.dotnetperls.com/2d-list-python
+        llf=llf[i].append(dklab[key])
+        llf=llf[i].append(ftrain[key])
+        if i<len(dklab):
+            llf.append()
+        i=i+1
     
     
     
