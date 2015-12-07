@@ -133,7 +133,7 @@ def load_ranking(params,query_id, annotation_val):
     query_class = list(annotation_val.loc[annotation_val['ImageID'] == query_id.split('.')[0]]['ClassID'])[0]
         
     # Open its ranking file
-    ranking = pd.read_csv(os.path.join(params['root'],params['root_save'],params['rankings_dir'],params['descriptor_type'],params['split'],query_id.split('.')[0] + '.txt'),header= None)
+    ranking = pd.read_csv(os.path.join(params['root'],params['database'],params['split'],'result',query_id.split('.')[0] + '.txt'),header= None)
     
     return query_class, ranking
     
@@ -146,7 +146,7 @@ def eval_rankings(params):
     annotation_val, annotation_train = read_annotation(params)
     
     # For all generated rankings
-    for val_id in os.listdir(os.path.join(params['root'],params['root_save'],params['rankings_dir'],params['descriptor_type'],params['split'])):
+    for val_id in os.listdir(os.path.join(params['root'],params['database'],params['split'],'result'))):
         
         query_class, ranking = load_ranking(params,val_id,annotation_val)
         

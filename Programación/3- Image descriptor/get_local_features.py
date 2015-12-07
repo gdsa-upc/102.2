@@ -1,32 +1,20 @@
 # -*- coding: utf-8 -*-
-import os
-import numpy as np
-import cPickle as pk
 import cv2
-import pandas as pd
-from get_params import get_params
 
-def get_local_features(params):
-    #Obrim .txt d'entrada
-    ID =open(os.path.join(params['root'],params['database'],'val','ImageIDs.txt'), 'r')
-    #Obrim .txt de sortida
-    feat = open('C:\Users\Gerard\Documents\Universidad\TercerCurso\GDSA\Proyecto\Codigo\pruebalocalfeat.txt')  
-    #Declarem el dictionary
-    dic1=dict()
+def get_local_features(params,image):
     orb=cv2.ORB()
-    #ORB obtiene 500 features de serie 
-        #Recorrem cada Imatge 
-    for line in ID:
-        #Ahora tenemos que calcular ORB para cada imagen y guardarlo!
-        ##leemos
-        img =  cv2.imread(os.path.join(params['root'],params['database'],'val','images',str(line).replace('\n','') + '.jpg'))
-        kp=orb.detect(img,None)
-        kp, des= orb.compute(img,kp,params['descriptor_size']) #computamos
-        #guardamos para cada valor de la imagen analizada sus descriptores
-        ##Debemos guardar todos los descriptores en una matriz
-        #dic1[line.replace('\n','')]=des
+    #ORB obté 500 características de serie
+    #Calculem els ORB per a la imatge
+    img = cv2.imread(image)
+    #Fem un resize de la imatge a la meitat de la original
+    img=cv2.resize(img, (0,0), fx=0.5, fy=0.5)
+    #Si volem un tamany específic ho fem aixi: img = cv2.resize(img, (250, 250)) 
+    #Guardem els Keypoints
+    kp=orb.detect(img,None)
+    #Guardem els Keypoints i els descriptors per la imatge
+    kp,des= orb.compute(img,kp,params['descriptor_size'])
+    #Retornem els descriptors de la imatge
     return des
-    ID.close()
 
 
     
