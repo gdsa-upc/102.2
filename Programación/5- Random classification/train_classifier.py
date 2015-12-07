@@ -7,7 +7,7 @@ import numpy as np
 def train_classifier(params):
     #Obrim el fitxer de les anotacions
     annotation = open(os.path.join(params['root'],params['database'],'train','annotation.txt'),'r')
-    #Saltem la primera linia del fitxer
+    #Saltem la primera linia del fitxer per no llegir-la
     annotation.readline()
     #Declarem la llista de les labels
     labels=[]
@@ -16,6 +16,7 @@ def train_classifier(params):
         #Afegim a la variable label totes les classes tretes del .txt de les annotacions
         #utilitzant la funcio split( ) i append( ) 
         labels.append(line.split()[1])
+    #Tanquem el fitxer
     annotation.close()
     #Declarem el diccionari amb les labels i el pes que tindran
     dic_labels=dict()
@@ -34,9 +35,9 @@ def train_classifier(params):
     dftrain=pk.load(bow_train)
     #Reobrim el fitxer de les anotacions
     annotation = open(os.path.join(params['root'],params['database'],'train','annotation.txt'),'r')
-    #Saltem la primera linia del fitxer
+    #Saltem la primera linia del fitxer per no llegir-la
     annotation.readline()
-    #Creem un diccionari amb les ImageIDs de train i el label
+    #Declaració del diccionari
     dklab=dict()
     for line in annotation:
         #Afegim a la variable label totes les classes tretes del .txt de les annotacions
@@ -44,7 +45,7 @@ def train_classifier(params):
         dklab[line.split()[0]]=line.split()[1]
     annotation.close()
     
-    #Creem dues llistes on hi hagin les "features" i els "labels" ORDENATS PER IMATGE!!
+    #Creem dues llistes on hi hagin les "features" i els "labels"
     lf=list()
     ll=list()
     for key in dklab.keys():
@@ -54,7 +55,7 @@ def train_classifier(params):
     lf=np.array(lf)
     ll=np.array(ll)
     #Entrenem el model SVM amb les dades d'entrenament
-    clf.fit(lf,ll) # Mirar ejemplo de Model Persistence: http://scikit-learn.org/stable/tutorial/basic/tutorial.html
+    clf.fit(lf,ll) # Exemple: http://scikit-learn.org/stable/tutorial/basic/tutorial.html
     
     #Guardem el model a memoria. El pk.dumps guarda el model en un string en comptes de en un fitxer
     trained_model = open (os.path.join(params['root'],params['database'],'train','Trained_model.txt'), 'w')
