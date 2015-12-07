@@ -25,7 +25,7 @@ def train_classifier(params):
             dic_labels[label]=1
         else:
            dic_labels[label]=0.17
-    #Declaracio de la clf
+    #Declaracio de la clf con sus parámetros
     clf = svm.SVC(gamma=0.001, C=100, class_weight=dic_labels)
     #Obrim el fitxer Features.txt de train
     bow_train= open((os.path.join(params['root'],params['database'],'train','Features.txt')),'r')
