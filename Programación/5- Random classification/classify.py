@@ -16,6 +16,7 @@ def classify(params):
     dickeys=[]
     diclist=[]
     for key,value in dval.iteritems():
+        #Afegim la key i value
         dickeys.append(key)
         diclist.append(value)
     diclist=np.array(diclist)
