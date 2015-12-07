@@ -23,11 +23,14 @@ def train_classifier(params):
     #Omplim el diccionari amb les labels i els seus pesos
     for label in set(labels):
         if label == 'desconegut':
-            dic_labels[label]=0.17
+            dic_labels[label]=0.167
         else:
            dic_labels[label]=1
     #Declaracio de la clf
-    clf = svm.SVC(gamma=0.001, C=100, class_weight=dic_labels)
+    clf = svm.SVC(C=1000, gamma=0.001, class_weight=dic_labels)
+    #Para probar diferentes parametros: svr = svm.SVC()
+    #Para probar diferentes parametros: parameters = {'C':[1, 10, 100, 1000, 10000],'kernel':('linear', 'rbf'), 'gamma':[0.001, 0.00001, 0.0000000001], 'class_weight':[dic_labels]}
+    #Para probar diferentes parametros: clf = grid_search.GridSearchCV(svr, parameters)
     #Obrim el fitxer Features.txt de train
     bow_train= open((os.path.join(params['root'],params['database'],'train','Features.txt')),'r')
     #Creem i omplim el diccionari de train
