@@ -31,6 +31,6 @@ print "-F1:", np.mean(f1)
 print "-Precision:", np.mean(precision)
 print "-Recall:", np.mean(recall)
 print "-Accuracy:", accuracy
-print "-Confusion matrix:", cm
+print "-Confusion matrix:\n", cm
 
 plot_confusion_matrix(cm, labels,normalize = True)
