@@ -21,7 +21,6 @@ def classify(params):
         diclist.append(value)
     diclist=np.array(diclist)
     prediction=clf2.predict(diclist)
-    print (prediction)
     fclassi = open((os.path.join(params['root'],params['database'],'val','Classify.txt')),'w')
     fclassi.write('ImageID'+"\t"+'ClassID'+"\n")
     #Per cada imatge de Validacio generem una classificacio 
