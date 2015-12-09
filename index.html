@@ -1,36 +1,44 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-
   <head>
-    <meta charset='utf-8'>
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="description" content="Egara-View : Cercador i classificador visual">
+    <title>Egara-View by gdsa-upc</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-dark.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/main.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-
-    <title>Egara-View</title>
   </head>
-
   <body>
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/gdsa-upc/Egara-View">View on GitHub</a>
+      <header>
+        <h1>Egara-View</h1>
+        <p>Cercador i classificador visual</p>
+      </header>
 
-          <h1 id="project_title">Egara-View</h1>
-          <h2 id="project_tagline">Cercador i classificador visual</h2>
+      <div id="banner">
+        <span id="logo"></span>
 
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/gdsa-upc/Egara-View/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/gdsa-upc/Egara-View/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
-    </div>
+        <a href="https://github.com/gdsa-upc/Egara-View" class="button fork"><strong>View On GitHub</strong></a>
+        <div class="downloads">
+          <span>Downloads:</span>
+          <ul>
+            <li><a href="https://github.com/gdsa-upc/Egara-View/zipball/master" class="button">ZIP</a></li>
+            <li><a href="https://github.com/gdsa-upc/Egara-View/tarball/master" class="button">TAR</a></li>
+          </ul>
+        </div>
+      </div><!-- end banner -->
 
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
+    <div class="wrapper">
+      <nav>
+        <ul></ul>
+      </nav>
+      <section>
         <table>
 <thead>
 <tr>
@@ -121,13 +129,15 @@
 
 <p>Egara-View té la funció de detectar i cercar els punts característics de la imatge (o de les imatges) desitjades i comparar-les amb moltes fotos d'una base de dades per determinar de quin edifici es tracta. Això ho aconseguim entrenant el nostre software amb la base de dades d'entrenament de la que disposem, de forma que aprengui les diferents característiques de cada atracció turística i calculi un rànquing amb les imatges que s'assemblen més.</p>
 
-<p>Aquí podem veure un exemple de com es calcularia les característiques (KeyPoints) d'una fotografia de l'escola d'enginyeria de Terrassa:
-<img src="http://s17.postimg.org/3yqmjj9un/foto_git_kp.jpg" alt=""></p>
+<p>Aquí podem veure un exemple de com es calcularia les característiques -KeyPoints- d'una fotografia de l'escola d'enginyeria de Terrassa:</p>
+
+<p><img src="http://s17.postimg.org/3yqmjj9un/foto_git_kp.jpg" alt=""></p>
 
 <p>Inicialment, ens centrarem en dotze edificis diferents de Terrassa, però aquest nombre de espais turístics es podría incrementar.</p>
 
-<p>Aquí podeu trobar més informació sobre com funciona Egara-View: <a href="https://drive.google.com/file/d/0B60dHCK-AdwBXzJzcFVpQnUwUVE/view?pli=1">Enllaç</a>
-Podeu trobar tot el <strong>codi per l'impementació</strong> a la capçalera de la pàgina.</p>
+<p>Aquí podeu trobar més informació sobre com funciona Egara-View: <a href="https://drive.google.com/file/d/0B60dHCK-AdwBXzJzcFVpQnUwUVE/view?pli=1">Enllaç</a></p>
+
+<p>Podeu trobar tot el <strong>codi per l'impementació</strong> a la capçalera de la pàgina.</p>
 
 <hr>
 
@@ -139,17 +149,12 @@ Podeu trobar tot el <strong>codi per l'impementació</strong> a la capçalera de
 
 <p>Per a més informació, adreçar-se al repositori de GitHub gdsa-upc, indicat més abaix.</p>
       </section>
-    </div>
-
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">Egara-View maintained by <a href="https://github.com/gdsa-upc">gdsa-upc</a></p>
-        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      <footer>
+        <p>Project maintained by <a href="https://github.com/gdsa-upc">gdsa-upc</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></small></p>
       </footer>
     </div>
-
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
     
-
   </body>
 </html>
