@@ -13,10 +13,13 @@ def get_features(params):
     #Extraccio de les caracteri­stiques de la imatge de la primera linia del ImageIDs.txt
     desc_train=get_local_features(params,os.path.join(params['root'],params['database'],'train','images',str(ID.readline()).replace('\n','') + '.jpg'))
     #Extraccio de les caracteri­stiques per a la resta de les imatges d'entrenament
+    i=0
     for line in ID:
         x=get_local_features(params,os.path.join(params['root'],params['database'],'train','images',str(line).replace('\n','') + '.jpg'))
         #Concatenar les caracteristiques de cada imatge en una numpy array
         desc_train=np.concatenate((desc_train,x))
+        print i
+        i=i+1
     #Tanquem el fitxer
     ID.close()
 

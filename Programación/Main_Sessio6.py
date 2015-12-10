@@ -7,18 +7,18 @@ from train_classifier import train_classifier
 from classify import classify
 from eval_classification import eval_classification
 from eval_classification import plot_confusion_matrix
-#import warnings
-#warnings.filterwarnings("ignore")
+import warnings
+warnings.filterwarnings("ignore")
 
 #Extraccio dels parametres
 params=get_params()
 #Creacio de la base de dades
-#params['split']='train'
-#build_database(params)
-#params['split']='val'
-#build_database(params)
+params['split']='train'
+build_database(params)
+params['split']='val'
+build_database(params)
 #Extraccio de les caracteri­stiques
-#get_features(params)
+get_features(params)
 #Entrenem un model de classificacio
 train_classifier(params)
 #Classificacio
