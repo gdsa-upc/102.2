@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import os
-from sklearn import svm
+from sklearn import svm,grid_search
 import cPickle as pk
 import numpy as np
 
@@ -27,10 +27,10 @@ def train_classifier(params):
         else:
            dic_labels[label]=1
     #Declaracio de la clf
-    clf = svm.SVC(C=1000, gamma=0.001, class_weight=dic_labels)
-    #Para probar diferentes parametros: svr = svm.SVC()
-    #Para probar diferentes parametros: parameters = {'C':[1, 10, 100, 1000, 10000],'kernel':('linear', 'rbf'), 'gamma':[0.001, 0.00001, 0.0000000001], 'class_weight':[dic_labels]}
-    #Para probar diferentes parametros: clf = grid_search.GridSearchCV(svr, parameters)
+    #clf = svm.SVC(C=1000, gamma=0.001, class_weight=dic_labels)
+    svr = svm.SVC()
+    parameters = {'C':[1, 10, 100, 1000, 10000],'kernel':('linear', 'rbf'), 'gamma':[0.001, 0.00001, 0.0000000001], 'class_weight':[dic_labels]}
+    clf = grid_search.GridSearchCV(svr, parameters)
     #Obrim el fitxer Features.txt de train
     bow_train= open((os.path.join(params['root'],params['database'],'train','Features.txt')),'r')
     #Creem i omplim el diccionari de train
