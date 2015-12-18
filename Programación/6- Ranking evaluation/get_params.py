@@ -22,8 +22,9 @@ def get_params():
 
     # Parameters
     params['split'] = 'val'
-    params['descriptor_size'] = 100
-    params['descriptor_type'] = 'random'
+    params['descriptor_size'] = 1000
+    params['descriptor_type'] = 'SIFT'
+    params['max_size'] = 500
     
     # We read the training annotations to know the set of possible labels
     data = pd.read_csv(os.path.join(params['root'],params['database'],'train','annotation.txt'), sep='\t', header = 0)
