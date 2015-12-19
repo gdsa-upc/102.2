@@ -11,31 +11,32 @@ def get_features(params):
     #Obrim el fitxer que conte les ID de les imatges d'entrenament
     ID=open(os.path.join(params['root'],params['database'],'train','ImageIDs.txt'), 'r')
     #Extraccio de les caracteristiques de la imatge de la primera linia del ImageIDs.txt
-    desc_train=get_local_features(params,os.path.join(params['root'],params['database'],'train','images',str(ID.readline()).replace('\n','') + '.jpg'))
+    nom=str(ID.readline()).replace('\n','')
+    desc_train=get_local_features(params,os.path.join(params['root'],params['database'],'train','images',nom + '.jpg'))
     #Extraccio de les caracteristiques per a la resta de les imatges d'entrenament
+    dictrain=dict()
+    dictrain[nom]=desc_train
     for line in ID:
-        x=get_local_features(params,os.path.join(params['root'],params['database'],'train','images',str(line).replace('\n','') + '.jpg'))
+        nom=str(line).replace('\n','')
+        x=get_local_features(params,os.path.join(params['root'],params['database'],'train','images',nom + '.jpg'))
         #Concatenar les caracteristiques de cada imatge en una numpy array
         desc_train=np.concatenate((desc_train,x))
+        dictrain[nom]=x
     #Tanquem el fitxer
     ID.close()
 
     #Entrenament del KMeans nomes per a les imatges d'entrenament amb 1000 paraules
-    paraules=1000
+    paraules=1024
     codebook=train_codebook(params,desc_train,paraules)
-    #Calculem les assignacions per les imatges d'entrenament
-    assignments=get_assignments(desc_train,codebook)
-    #Creacio del diccionari de les imatges d'entrenament
-    dictrain=dict()
     #Obrim el fitxer que conte les ID de les imatges d'entrenament
     ID=open(os.path.join(params['root'],params['database'],'train','ImageIDs.txt'), 'r')
 
     for line in ID:
-        x=get_local_features(params,os.path.join(params['root'],params['database'],'train','images',str(line).replace('\n','') + '.jpg'))
+        nom=str(line).replace('\n','')
         #Calculem les assignacions per les imatges d'entrenament
-        assignments=get_assignments(x,codebook)
+        assignments=get_assignments(dictrain[nom],codebook)
         #Creacio del BoW per les imatges d'entrenament i emplenament del diccionari
-        dictrain[str(line).replace('\n','')]=build_bow(assignments,codebook,paraules)
+        dictrain[nom]=build_bow(assignments,codebook,paraules)
     #Tanquem el fitxer
     ID.close()
 
