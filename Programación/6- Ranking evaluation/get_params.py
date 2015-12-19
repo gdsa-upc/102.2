@@ -22,10 +22,10 @@ def get_params():
 
     # Parameters
     params['split'] = 'val'
-    params['descriptor_size'] = 1000
+    params['descriptor_size'] = 1024
     params['descriptor_type'] = 'SIFT'
-    params['max_size'] = 500
-    
+    params['max_size'] = 800
+    params['svm_tune'] =[{'C':[0.1, 1, 10, 100, 1000, 10000],'kernel':('linear', 'rbf'), 'gamma':[1e-1, 1e-2, 1e-3, 1e-4, 1e-5, 1e-6, 1e-7, 1e-8]}]    
     # We read the training annotations to know the set of possible labels
     data = pd.read_csv(os.path.join(params['root'],params['database'],'train','annotation.txt'), sep='\t', header = 0)
     
