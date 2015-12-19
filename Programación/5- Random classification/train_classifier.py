@@ -3,6 +3,7 @@ import os
 from sklearn import svm,grid_search
 import cPickle as pk
 import numpy as np
+from scipy.stats import itemfreq
 
 def train_classifier(params):
     #Obrim el fitxer de les anotacions
@@ -20,17 +21,10 @@ def train_classifier(params):
     annotation.close()
     #Declarem el diccionari amb les labels i el pes que tindran
     dic_labels=dict()
-    #Omplim el diccionari amb les labels i els seus pesos
-    for label in set(labels):
-        if label == 'desconegut':
-            dic_labels[label]=0.167
-        else:
-           dic_labels[label]=1
+    dic_labels=get_class_weights(labels)
     #Declaracio de la clf
     #clf = svm.SVC(C=1000, gamma=0.001, class_weight=dic_labels)
-    svr = svm.SVC()
-    parameters = {'C':[1, 10, 100, 1000, 10000],'kernel':('linear', 'rbf'), 'gamma':[0.001, 0.00001, 0.0000000001], 'class_weight':[dic_labels]}
-    clf = grid_search.GridSearchCV(svr, parameters)
+    clf = svm.SVC(class_weight=dic_labels)
     #Obrim el fitxer Features.txt de train
     bow_train= open((os.path.join(params['root'],params['database'],'train','Features.txt')),'r')
     #Creem i omplim el diccionari de train
@@ -57,6 +51,7 @@ def train_classifier(params):
         
     lf=np.array(lf)
     ll=np.array(ll)
+    clf = tune_parameters(params,lf,ll,clf)
     #Entrenem el model SVM amb les dades d'entrenament
     clf.fit(lf,ll) # Exemple: http://scikit-learn.org/stable/tutorial/basic/tutorial.html
     
@@ -64,3 +59,38 @@ def train_classifier(params):
     trained_model = open (os.path.join(params['root'],params['database'],'train','Trained_model.txt'), 'w')
     pk.dump(clf,trained_model)
     trained_model.close()
+    
+def get_class_weights(labels):
+    # Get number of times each class appears in the training data
+    freq = itemfreq(labels)
+
+    # Isolate values and convert to integer
+    freq = np.array(freq[:,1]).astype(int)
+
+    # Get individual class weights. If a class has more samples, its weight is smaller
+    freq = float(len(labels))/ (13 * freq)
+
+    # Get unique class names
+    class_names = np.unique(labels)
+
+    # Init dictionary
+    class_weights = {}
+
+    # Put class weights in dictionary
+    for i in range(len(class_names)):
+
+        class_weights[class_names[i]] = freq[i]
+
+    return class_weights
+    
+def tune_parameters(params,X,y,clf):
+    # Initialize the gridsearch object
+    gs = grid_search.GridSearchCV(clf, params['svm_tune'],cv=5,scoring='f1_macro')
+    
+    # Fit data
+    gs.fit(X,y)
+    
+    print "Chosen parameters", gs.best_params_
+    print "Score during tuning:", gs.best_score_
+    
+    return gs.best_estimator_
