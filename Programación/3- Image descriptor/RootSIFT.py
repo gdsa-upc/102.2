@@ -3,7 +3,7 @@ import cv2
  
 class RootSIFT:
 	def __init__(self):
-		#Inicialització del self.extractor
+		#Inicialitzacio del self.extractor
 		self.extractor = cv2.DescriptorExtractor_create("SIFT")
  
 	def compute(self, image, kps, eps=1e-7):
