@@ -25,7 +25,7 @@ def get_features(params):
     #Tanquem el fitxer
     ID.close()
 
-    #Entrenament del KMeans nomes per a les imatges d'entrenament amb 1000 paraules
+    #Entrenament del KMeans nomes per a les imatges d'entrenament amb 1024 paraules
     paraules=1024
     codebook=train_codebook(params,desc_train,paraules)
     #Obrim el fitxer que conte les ID de les imatges d'entrenament
