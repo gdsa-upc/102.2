@@ -72,8 +72,8 @@ No has sentit a parlar de l'aplicació Jupyter Notebook? <a href="http://jupyter
 </tbody>
 </table>
 
-<h3>
-<a id="què-és-egara-view" class="anchor" href="#qu%C3%A8-%C3%A9s-egara-view" aria-hidden="true"><span class="octicon octicon-link"></span></a>Què és Egara-View?</h3>
+<h1>
+<a id="què-és-egara-view" class="anchor" href="#qu%C3%A8-%C3%A9s-egara-view" aria-hidden="true"><span class="octicon octicon-link"></span></a>Què és Egara-View?</h1>
 
 <p>Egara-View es una plataforma implementada i desenvolupada amb el <strong>llenguatge Python</strong> que, mitjançant un cercador i classificador visual, reconeix els diferents edificis emblemàtics de Terrassa.</p>
 
@@ -101,13 +101,13 @@ No has sentit a parlar de l'aplicació Jupyter Notebook? <a href="http://jupyter
 
 <p><img src="http://s9.postimg.org/5apku98wv/python.png" alt="Llenguatge Python"></p>
 
-<h3>
-<a id="per-què-egara-view" class="anchor" href="#per-qu%C3%A8-egara-view" aria-hidden="true"><span class="octicon octicon-link"></span></a>Per què Egara-View?</h3>
+<h1>
+<a id="per-què-egara-view" class="anchor" href="#per-qu%C3%A8-egara-view" aria-hidden="true"><span class="octicon octicon-link"></span></a>Per què Egara-View?</h1>
 
 <p>Egara-View ha estat disenyat com a projecte de l'assignatura 'Gestió i distribució de senyals audiovisuals'. Es pot fer servir per qualsevol dubte relacionat amb edificis que desconeixes sobre Terrassa amb el simple fet de fer-ne una fotografaia.</p>
 
-<h3>
-<a id="qui-som" class="anchor" href="#qui-som" aria-hidden="true"><span class="octicon octicon-link"></span></a>Qui som?</h3>
+<h1>
+<a id="qui-som" class="anchor" href="#qui-som" aria-hidden="true"><span class="octicon octicon-link"></span></a>Qui som?</h1>
 
 <p>El projecte Egara-View ha sigut desenvolupat per un grup de quatre estudiants d'enginyeria de sistemes audiovisuals de l'Escola d'enginyeria de Terrassa (EET):</p>
 
@@ -143,10 +143,10 @@ No has sentit a parlar de l'aplicació Jupyter Notebook? <a href="http://jupyter
 </tbody>
 </table>
 
-<h3>
-<a id="com-funciona" class="anchor" href="#com-funciona" aria-hidden="true"><span class="octicon octicon-link"></span></a>Com funciona?</h3>
+<h1>
+<a id="com-funciona" class="anchor" href="#com-funciona" aria-hidden="true"><span class="octicon octicon-link"></span></a>Com funciona?</h1>
 
-<p><a href="http://s16.postimg.org/3pyimasb9/bloques.jpg">Esquema</a></p>
+<p><img src="Esquema%20del%20Sistema" alt="http://s16.postimg.org/3pyimasb9/bloques.jpg"></p>
 
 <p>Partint de l'esquema, primer de tot Egara-View parteix d'una <strong>Base de Dades</strong> formada per 180 fotos d'entrenament, que com el nom indica, serviran per <strong>entrenar</strong> el nostre sistema i, per 450 fotos de <strong>validació</strong> que serviran per evaluar el nostre sistema. Inicialment, ens centrarem en dotze edificis diferents de Terrassa, però aquest nombre de espais turístics es podría incrementar.</p>
 
@@ -165,9 +165,7 @@ No has sentit a parlar de l'aplicació Jupyter Notebook? <a href="http://jupyter
 <p>Pel que fa al bloc del <strong>classificador</strong>, passant una imatge o, en aquest cas imatges, gràcies un altre cop a les BoW i a un identificador de cada imatge (ID) et classifica aquestes imatges segons a la classe que pertanyen, és a dir, a quin edifici es correspon.</p>
 
 <p>Aquí podeu consultar dues demos de com funciona el nostre rànquing i el nostre classificador: 
-<a href="https://github.com/gdsa-upc/Egara-view/blob/3f6463c2937bb52ee77ed8337a237c7915171f25/Programaci%C3%B3n/Jupyter_sessio_7_Ranking.ipynb">Rànquing</a></p>
-
-<p><a href="https://github.com/gdsa-upc/Egara-view/blob/f162dcb5ff4e0af127540555617ab2b1ca301e0f/Programaci%C3%B3n/Jupyter_sessio_7_Classification.ipynb">Classificador</a>.</p>
+<a href="https://github.com/gdsa-upc/Egara-view/blob/3f6463c2937bb52ee77ed8337a237c7915171f25/Programaci%C3%B3n/Jupyter_sessio_7_Ranking.ipynb">Rànquing</a>, <a href="https://github.com/gdsa-upc/Egara-view/blob/f162dcb5ff4e0af127540555617ab2b1ca301e0f/Programaci%C3%B3n/Jupyter_sessio_7_Classification.ipynb">Classificador</a>.</p>
 
 <p>Com podeu observar, la demo del rànquing, ens mostra les 10 imatges més semblants a la imatge passada com a query. En canvi, la demo del classificador, ens classifica 10 imatges diferents segons a la classe a la que pertany, és a dir, si sap a quin edifici de Terrassa es correspon la imatge. Cal dir que classifica com a 'desconegut' les imatges que formen part d'edificis que no estan registrats a la nostra base de dades.</p>
 
@@ -175,8 +173,8 @@ No has sentit a parlar de l'aplicació Jupyter Notebook? <a href="http://jupyter
 
 <p>Podeu trobar tot el <strong>codi per l'impementació</strong> a la capçalera de la pàgina.</p>
 
-<h3>
-<a id="fiabilitat-del-projecte" class="anchor" href="#fiabilitat-del-projecte" aria-hidden="true"><span class="octicon octicon-link"></span></a>Fiabilitat del projecte</h3>
+<h1>
+<a id="fiabilitat-del-projecte" class="anchor" href="#fiabilitat-del-projecte" aria-hidden="true"><span class="octicon octicon-link"></span></a>Fiabilitat del projecte</h1>
 
 <p>La fiabilitat del projecte es pot demostrar amb diversos càlculs de mesures gràcies a dues fucions que evaluen els resultats del rànquing i del classificador. </p>
 
@@ -185,12 +183,37 @@ No has sentit a parlar de l'aplicació Jupyter Notebook? <a href="http://jupyter
 
 <p>Pel que fa al classificador s'obtenen aquests resultats:</p>
 
-<p>Mesures | Resultats | Descripció de les mesures
------------- | ------------- 
-F1 | <strong>0.796</strong> | La F1 és la mesura que combina la precisió y recall
-Precisió (Precision) | <strong>0.862</strong> | Precisió de les imatges que són rellevants
-Recall | <strong>0.753</strong> | Imatges que són rellevants per la consulta 
-Exactitud (Accuracy) | <strong>0.794</strong> | Exactitud dels resultats</p>
+<table>
+<thead>
+<tr>
+<th>Mesures</th>
+<th>Resultats</th>
+<th>Descripció de les mesures</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>F1</td>
+<td><strong>0.796</strong></td>
+<td>La F1 és la mesura que combina la precisió y recall</td>
+</tr>
+<tr>
+<td>Precisió (Precision)</td>
+<td><strong>0.862</strong></td>
+<td>Precisió de les imatges que són rellevants</td>
+</tr>
+<tr>
+<td>Recall</td>
+<td><strong>0.753</strong></td>
+<td>Imatges que són rellevants per la consulta</td>
+</tr>
+<tr>
+<td>Exactitud (Accuracy)</td>
+<td><strong>0.794</strong></td>
+<td>Exactitud dels resultats</td>
+</tr>
+</tbody>
+</table>
 
 <h1>
 <a id="matriu-de-confusió" class="anchor" href="#matriu-de-confusi%C3%B3" aria-hidden="true"><span class="octicon octicon-link"></span></a>Matriu de confusió</h1>
@@ -204,9 +227,22 @@ Exactitud (Accuracy) | <strong>0.794</strong> | Exactitud dels resultats</p>
 
 <p>Pel que fa al rànquing s'obté aquest resultat: </p>
 
-<p>Mesures | Resultats | Descripció de les mesures
------------- | -------------
-Mean Average Precision (mAP) | <strong>0.297</strong> | Mitja de les precisions per a cada imatge</p>
+<table>
+<thead>
+<tr>
+<th>Mesures</th>
+<th>Resultats</th>
+<th>Descripció de les mesures</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mean Average Precision (mAP)</td>
+<td><strong>0.297</strong></td>
+<td>Mitja de les precisions per a cada imatge</td>
+</tr>
+</tbody>
+</table>
 
 <p>Si voleu trobar informació addicional sobre com han estat calculades aquestes mesures: <a href="https://docs.google.com/presentation/d/1svkCqCPMrNTScyijic9pCH7s0w67uJrnRatHRYNElqA/edit#slide=id.g45611ff3f_2_11">Enllaç</a></p>
 
