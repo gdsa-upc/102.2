@@ -1,25 +1,34 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html>
   <head>
-    <meta charset="UTF-8">
-    <title>Egara-View by gdsa-upc</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
-  </head>
-  <body>
-    <section class="page-header">
-      <h1 class="project-name">Egara-View</h1>
-      <h2 class="project-tagline">Cercador i classificador visual</h2>
-      <a href="https://github.com/gdsa-upc/Egara-View" class="btn">View on GitHub</a>
-      <a href="https://github.com/gdsa-upc/Egara-View/zipball/master" class="btn">Download .zip</a>
-      <a href="https://github.com/gdsa-upc/Egara-View/tarball/master" class="btn">Download .tar.gz</a>
-    </section>
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
 
-    <section class="main-content">
-      <p><img src="http://s10.postimg.org/i8n01l7q1/logo_positiu_1.jpg" alt=""></p>
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Egara-View by gdsa-upc</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Egara-View</h1>
+        <h2>Cercador i classificador visual</h2>
+        <a href="https://github.com/gdsa-upc/Egara-View" class="button"><small>View project on</small> GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <p><img src="http://s10.postimg.org/i8n01l7q1/logo_positiu_1.jpg" alt=""></p>
 
 <p>Informació referent a tota la implementació del projecte i enllaç a <strong>Jupyter Notebook</strong> per a cada sessió.
 No has sentit a parlar de l'aplicació Jupyter Notebook? <a href="http://jupyter.org/">Aquí</a> tens la informació que necesites.</p>
@@ -70,6 +79,26 @@ No has sentit a parlar de l'aplicació Jupyter Notebook? <a href="http://jupyter
 
 <p>Els usuaris poden prendre una fotografia d'aquests edificis i obtenir informació d'interés sobre aquest edifici si es troba dins la nostra base de dades.</p>
 
+<p>Els diferents edificis emblemàtics amb els que treballa Egara_View són els següents:</p>
+
+<ul>
+<li>L' ajuntament de Terrassa</li>
+<li>El castell cartoixa</li>
+<li>La catedral </li>
+<li>El monument de la dona treballadora</li>
+<li>L' escola enginyeria de Terrassa</li>
+<li>L' estacio del nord<br>
+</li>
+<li>La farmacia Albinyana </li>
+<li>La masia freixa</li>
+<li>El mercat de l' independencia</li>
+<li>El Museu de la Ciència i de la Tècnica de Catalunya</li>
+<li>La societat general</li>
+<li>El teatre_principal</li>
+</ul>
+
+<p>Y una altra classe que permetria classificar els edificis que no són cap d'aquets nombrats anteriorment que s'anomena 'desconegut'.</p>
+
 <p><img src="http://s9.postimg.org/5apku98wv/python.png" alt="Llenguatge Python"></p>
 
 <h3>
@@ -117,39 +146,91 @@ No has sentit a parlar de l'aplicació Jupyter Notebook? <a href="http://jupyter
 <h3>
 <a id="com-funciona" class="anchor" href="#com-funciona" aria-hidden="true"><span class="octicon octicon-link"></span></a>Com funciona?</h3>
 
-<p>Egara-View té la funció de detectar i cercar els punts característics de la imatge (o de les imatges) desitjades i comparar-les amb moltes fotos d'una base de dades per determinar de quin edifici es tracta. Això ho aconseguim entrenant el nostre software amb la base de dades d'entrenament de la que disposem, de forma que aprengui les diferents característiques de cada atracció turística i calculi un rànquing amb les imatges que s'assemblen més.</p>
+<p><a href="http://s16.postimg.org/3pyimasb9/bloques.jpg">Esquema</a></p>
+
+<p>Partint de l'esquema, primer de tot Egara-View parteix d'una <strong>Base de Dades</strong> formada per 180 fotos d'entrenament, que com el nom indica, serviran per <strong>entrenar</strong> el nostre sistema i, per 450 fotos de <strong>validació</strong> que serviran per evaluar el nostre sistema. Inicialment, ens centrarem en dotze edificis diferents de Terrassa, però aquest nombre de espais turístics es podría incrementar.</p>
+
+<p>El bloc de l'<strong>extracció de característiques</strong> és, que Egara-View té la funció de detectar i cercar els punts característics de la imatge (o de les imatges) desitjades mitjançant un extractor de característiques que, en el nostre cas és el <a href="http://www.pyimagesearch.com/2015/04/13/implementing-rootsift-in-python-and-opencv/">RootSIFT</a>. El RootSIFT ens retorna un vector de 1000 característiques per cada punt d'interès. </p>
+
+<p>Aleshores, utilitzem una funció anomenada <a href="http://scikit-learn.org/stable/modules/generated/sklearn.cluster.MiniBatchKMeans.html">MiniBatchKMeans</a> que, per cada un d'aquests punts d'interès, l'assigna a una regió previament càlculada, anomenada 'cluster' que en el nostre cas en definim 1024. Per a cada regió, és càlcula el punt mitj de les distàncies, anomenat 'centroide'.</p>
+
+<p>Aquestes assignacions de cada regió són les permeten crear el BoW (bag of words), un vector que esta format per paraules visuals. </p>
 
 <p>Aquí podem veure un exemple de com es calcularia les característiques -KeyPoints- d'una fotografia de l'escola d'enginyeria de Terrassa:</p>
 
 <p><img src="http://s17.postimg.org/3yqmjj9un/foto_git_kp.jpg" alt=""></p>
 
-<p>Inicialment, ens centrarem en dotze edificis diferents de Terrassa, però aquest nombre de espais turístics es podría incrementar.</p>
+<p>El bloc del <strong>rànquing</strong> es duu a terme gràcies a les BoW anomenades anteriorment, ja que passant una imatge a evaluar, es càlculen les <a href="https://ca.wikipedia.org/wiki/Dist%C3%A0ncia_euclidiana">distàncies euclidianes</a> entre l'histograma de les imatges de validació i les d'entrenament i ens permet càlcular i fer un rànquing de les imatges amb un valor més petit sobre la distància euclidiana, és a dir, les imatges que més s'assemblen, ja que com més petita es la distància, voldrà dir que més s'emblant és la imatge.</p>
 
-<p>Informació addicional sobre com funciona Egara-View: <a href="https://drive.google.com/file/d/0B60dHCK-AdwBXzJzcFVpQnUwUVE/view?pli=1">Enllaç</a></p>
+<p>Pel que fa al bloc del <strong>classificador</strong>, passant una imatge o, en aquest cas imatges, gràcies un altre cop a les BoW i a un identificador de cada imatge (ID) et classifica aquestes imatges segons a la classe que pertanyen, és a dir, a quin edifici es correspon.</p>
+
+<p>Aquí podeu consultar dues demos de com funciona el nostre rànquing i el nostre classificador: 
+<a href="https://github.com/gdsa-upc/Egara-view/blob/3f6463c2937bb52ee77ed8337a237c7915171f25/Programaci%C3%B3n/Jupyter_sessio_7_Ranking.ipynb">Rànquing</a></p>
+
+<p><a href="https://github.com/gdsa-upc/Egara-view/blob/f162dcb5ff4e0af127540555617ab2b1ca301e0f/Programaci%C3%B3n/Jupyter_sessio_7_Classification.ipynb">Classificador</a>.</p>
+
+<p>Com podeu observar, la demo del rànquing, ens mostra les 10 imatges més semblants a la imatge passada com a query. En canvi, la demo del classificador, ens classifica 10 imatges diferents segons a la classe a la que pertany, és a dir, si sap a quin edifici de Terrassa es correspon la imatge. Cal dir que classifica com a 'desconegut' les imatges que formen part d'edificis que no estan registrats a la nostra base de dades.</p>
+
+<p>Si voleu consultar nformació addicional sobre com funciona Egara-View: <a href="https://drive.google.com/file/d/0B60dHCK-AdwBXzJzcFVpQnUwUVE/view?pli=1">Enllaç</a></p>
 
 <p>Podeu trobar tot el <strong>codi per l'impementació</strong> a la capçalera de la pàgina.</p>
 
 <h3>
 <a id="fiabilitat-del-projecte" class="anchor" href="#fiabilitat-del-projecte" aria-hidden="true"><span class="octicon octicon-link"></span></a>Fiabilitat del projecte</h3>
 
-<p>La fiabilitat del projecte es pot demostrar amb diversos càlculs de mesures.
-Hem fet tots els càlculs de les mesures en dues demos que evaluen el nostre rànquing i el nostre <a href="https://github.com/gdsa-upc/Egara-View/blob/master/Programaci%C3%B3n/jupyter_sessio_6.ipynb">classificador</a>.</p>
+<p>La fiabilitat del projecte es pot demostrar amb diversos càlculs de mesures gràcies a dues fucions que evaluen els resultats del rànquing i del classificador. </p>
 
-<p>Com podeu observar, la demo del rànquing, ens mostra les 10 imatges més semblants a la imatge passada com a query. En canvi, la demo del classificador, ens classifica 10 imatges diferents segons a la classe a la que pertany, és a dir, si sap a quin edifici de Terrassa es correspon la imatge. Cal dir que classifica com a 'desconegut' les imatges que formen part d'edificis que no estan registrats a la nostra base de dades.</p>
+<h2>
+<a id="classificador" class="anchor" href="#classificador" aria-hidden="true"><span class="octicon octicon-link"></span></a>Classificador</h2>
 
-<p>Informació addicional sobre com han estat calculades aquestes mesures: <a href="https://docs.google.com/presentation/d/1svkCqCPMrNTScyijic9pCH7s0w67uJrnRatHRYNElqA/edit#slide=id.g45611ff3f_2_11">Enllaç</a></p>
+<p>Pel que fa al classificador s'obtenen aquests resultats:</p>
+
+<p>Mesures | Resultats | Descripció de les mesures
+------------ | ------------- 
+F1 | <strong>0.796</strong> | La F1 és la mesura que combina la precisió y recall
+Precisió (Precision) | <strong>0.862</strong> | Precisió de les imatges que són rellevants
+Recall | <strong>0.753</strong> | Imatges que són rellevants per la consulta 
+Exactitud (Accuracy) | <strong>0.794</strong> | Exactitud dels resultats</p>
+
+<h1>
+<a id="matriu-de-confusió" class="anchor" href="#matriu-de-confusi%C3%B3" aria-hidden="true"><span class="octicon octicon-link"></span></a>Matriu de confusió</h1>
+
+<p>La <a href="https://es.wikipedia.org/wiki/Matriz_de_confusi%C3%B3n">matriu de confusió</a> és una eina que permet la visualització de la efectivitat del nostre sistema, que es pot observar en la diagonal d'aquesta.</p>
+
+<p><img src="http://s29.postimg.org/f1jn4lmwn/matriu.jpg" alt=""></p>
+
+<h2>
+<a id="rànquing" class="anchor" href="#r%C3%A0nquing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Rànquing</h2>
+
+<p>Pel que fa al rànquing s'obté aquest resultat: </p>
+
+<p>Mesures | Resultats | Descripció de les mesures
+------------ | -------------
+Mean Average Precision (mAP) | <strong>0.297</strong> | Mitja de les precisions per a cada imatge</p>
+
+<p>Si voleu trobar informació addicional sobre com han estat calculades aquestes mesures: <a href="https://docs.google.com/presentation/d/1svkCqCPMrNTScyijic9pCH7s0w67uJrnRatHRYNElqA/edit#slide=id.g45611ff3f_2_11">Enllaç</a></p>
 
 <hr>
 
 <p>Per a més informació, adreçar-se al repositori de GitHub gdsa-upc, indicat més abaix.</p>
+        </section>
 
-      <footer class="site-footer">
-        <span class="site-footer-owner"><a href="https://github.com/gdsa-upc/Egara-View">Egara-View</a> is maintained by <a href="https://github.com/gdsa-upc">gdsa-upc</a>.</span>
+        <aside id="sidebar">
+          <a href="https://github.com/gdsa-upc/Egara-View/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/gdsa-upc/Egara-View/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
 
-        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
-      </footer>
+          <p class="repo-owner"><a href="https://github.com/gdsa-upc/Egara-View"></a> is maintained by <a href="https://github.com/gdsa-upc">gdsa-upc</a>.</p>
 
-    </section>
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
 
   
   </body>
