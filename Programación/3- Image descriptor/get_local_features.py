@@ -18,7 +18,6 @@ def get_local_features(params,image):
  
     # extract and compute RootSIFT descriptors
     extractor = RootSIFT()
-    (kp, des) = extractor.compute(gray, kp)
     kp,des= extractor.compute(gray,kp,params['descriptor_size'])
     return des
 
