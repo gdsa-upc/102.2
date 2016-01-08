@@ -97,5 +97,5 @@ def get_features_test(params):
     ID.close()
     #Guardem el diccionari amb el BoW de les imatges de test en l'arxiu "Features.txt"
     bow_test = open (os.path.join(params['root'],params['database'],'test','Features.txt'), 'w')
-    pk.dump(dicval,bow_test)
+    pk.dump(dictest,bow_test)
     bow_test.close()
