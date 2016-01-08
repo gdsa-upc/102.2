@@ -5,7 +5,7 @@ import cPickle as pk
 import numpy as np
 from scipy.stats import itemfreq
 
-def train_classifier(params):
+def train_classifier_test(params):
     #Obrim el fitxer de les anotacions
     annotation = open(os.path.join(params['root'],params['database'],'train','annotation.txt'),'r')
     #Saltem la primera linia del fitxer per no llegir-la
@@ -76,7 +76,7 @@ def train_classifier(params):
     #Creem dues llistes on hi hagin les "features" i els "labels"
     lfv=list()
     ll_v=list()
-    for key in dklabt.keys():
+    for key in dklabv.keys():
         ll_v.append(dklabv[key])
         lfv.append(dfval[key])
     lfv=np.array(lfv)
