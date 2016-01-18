@@ -13,13 +13,13 @@
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <title>Egara-View by gdsa-upc</title>
+    <title>Egara View by gdsa-upc</title>
   </head>
 
   <body>
     <header>
       <div class="inner">
-        <h1>Egara-View</h1>
+        <h1>Egara View</h1>
         <h2>Cercador i classificador visual</h2>
         <a href="https://github.com/gdsa-upc/Egara-View" class="button"><small>View project on</small> GitHub</a>
       </div>
@@ -75,13 +75,13 @@ No has sentit a parlar de l'aplicació Jupyter Notebook? <a href="http://jupyter
 </table>
 
 <h1>
-<a id="què-és-egara-view" class="anchor" href="#qu%C3%A8-%C3%A9s-egara-view" aria-hidden="true"><span class="octicon octicon-link"></span></a>Què és Egara-View?</h1>
+<a id="què-és-egara-view" class="anchor" href="#qu%C3%A8-%C3%A9s-egara-view" aria-hidden="true"><span class="octicon octicon-link"></span></a>Què és Egara View?</h1>
 
-<p>Egara-View es una plataforma implementada i desenvolupada amb el <strong>llenguatge Python</strong> que, mitjançant un cercador i classificador visual, reconeix els diferents edificis emblemàtics de Terrassa.</p>
+<p>Egara View es una plataforma implementada i desenvolupada amb el <strong>llenguatge Python</strong> que, mitjançant un cercador i classificador visual, reconeix els diferents edificis emblemàtics de Terrassa.</p>
 
 <p>Els usuaris poden prendre una fotografia d'aquests edificis i obtenir informació d'interés sobre aquest edifici si es troba dins la nostra base de dades.</p>
 
-<p>Els diferents edificis emblemàtics amb els que treballa Egara_View són els següents:</p>
+<p>Els diferents edificis emblemàtics amb els que treballa Egara View són els següents:</p>
 
 <ul>
 <li>L' ajuntament de Terrassa</li>
@@ -104,14 +104,14 @@ No has sentit a parlar de l'aplicació Jupyter Notebook? <a href="http://jupyter
 <p><img src="http://s9.postimg.org/5apku98wv/python.png" alt="Llenguatge Python"></p>
 
 <h1>
-<a id="per-què-egara-view" class="anchor" href="#per-qu%C3%A8-egara-view" aria-hidden="true"><span class="octicon octicon-link"></span></a>Per què Egara-View?</h1>
+<a id="per-què-egara-view" class="anchor" href="#per-qu%C3%A8-egara-view" aria-hidden="true"><span class="octicon octicon-link"></span></a>Per què Egara View?</h1>
 
-<p>Egara-View ha estat disenyat com a projecte de l'assignatura 'Gestió i distribució de senyals audiovisuals'. Es pot fer servir per qualsevol dubte relacionat amb edificis que desconeixes sobre Terrassa amb el simple fet de fer-ne una fotografia.</p>
+<p>Egara View ha estat disenyat com a projecte de l'assignatura 'Gestió i distribució de senyals audiovisuals'. Es pot fer servir per qualsevol dubte relacionat amb edificis que desconeixes sobre Terrassa amb el simple fet de fer-ne una fotografia.</p>
 
 <h1>
 <a id="qui-som" class="anchor" href="#qui-som" aria-hidden="true"><span class="octicon octicon-link"></span></a>Qui som?</h1>
 
-<p>El projecte Egara-View ha sigut desenvolupat per un grup de quatre estudiants d'enginyeria de sistemes audiovisuals de l'Escola d'enginyeria de Terrassa (EET):</p>
+<p>El projecte Egara View ha sigut desenvolupat per un grup de quatre estudiants d'enginyeria de sistemes audiovisuals de l'Escola d'enginyeria de Terrassa (EET):</p>
 
 <table>
 <thead>
@@ -150,9 +150,9 @@ No has sentit a parlar de l'aplicació Jupyter Notebook? <a href="http://jupyter
 
 <p><img src="http://s16.postimg.org/ix9dh4mo5/blocs.jpg" alt=""></p>
 
-<p>Partint de l'esquema, primer de tot Egara-View parteix d'una <strong>Base de Dades</strong> formada per 180 fotos d'entrenament, que com el nom indica, serviran per <strong>entrenar</strong> el nostre sistema i, per 450 fotos de <strong>validació</strong> que serviran per evaluar el nostre sistema. Inicialment, ens centrarem en dotze edificis diferents de Terrassa, però aquest nombre de espais turístics es podría incrementar.</p>
+<p>Partint de l'esquema, primer de tot Egara View parteix d'una <strong>Base de Dades</strong> formada per 180 fotos d'entrenament, que com el nom indica, serviran per <strong>entrenar</strong> el nostre sistema i, per 450 fotos de <strong>validació</strong> que serviran per evaluar el nostre sistema. Inicialment, ens centrarem en dotze edificis diferents de Terrassa, però aquest nombre de espais turístics es podría incrementar.</p>
 
-<p>El bloc de l'<strong>extracció de característiques</strong> és, que Egara-View té la funció de detectar i cercar els punts característics de la imatge (o de les imatges) desitjades mitjançant un extractor de característiques que, en el nostre cas és el <a href="http://www.pyimagesearch.com/2015/04/13/implementing-rootsift-in-python-and-opencv/">RootSIFT</a>. El RootSIFT ens retorna un vector de 1000 característiques per cada punt d'interès. </p>
+<p>El bloc de l'<strong>extracció de característiques</strong> és, que Egara View té la funció de detectar i cercar els punts característics de la imatge (o de les imatges) desitjades mitjançant un extractor de característiques que, en el nostre cas és el <a href="http://www.pyimagesearch.com/2015/04/13/implementing-rootsift-in-python-and-opencv/">RootSIFT</a>. El RootSIFT ens retorna un vector de 1000 característiques per cada punt d'interès. </p>
 
 <p>Aleshores, utilitzem una funció anomenada <a href="http://scikit-learn.org/stable/modules/generated/sklearn.cluster.MiniBatchKMeans.html">MiniBatchKMeans</a> que, per cada un d'aquests punts d'interès, l'assigna a una regió previament càlculada, anomenada 'cluster' que en el nostre cas en definim 1024. Per a cada regió, és càlcula el punt mitj de les distàncies, anomenat 'centroide'.</p>
 
